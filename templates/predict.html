@@ -1,0 +1,63 @@
+<!-- prediction form HTML -->
+ {% extends "base.html" %}
+{% block title %}Predict {{ disease.capitalize() }} Risk{% endblock %}
+{% block content %}
+<h2>Predict {{ disease.capitalize() }} Risk</h2>
+
+<form method="POST" action="{{ url_for('predict', disease=disease) }}">
+  <!-- Example fields - customize based on disease -->
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" class="form-control" id="age" name="age" required />
+  </div>
+
+  {% if disease == 'heart' %}
+  <div class="mb-3">
+    <label for="blood_pressure" class="form-label">Blood Pressure</label>
+    <input type="number" class="form-control" id="blood_pressure" name="blood_pressure" required />
+  </div>
+  <div class="mb-3">
+    <label for="cholesterol" class="form-label">Cholesterol</label>
+    <input type="number" class="form-control" id="cholesterol" name="cholesterol" required />
+  </div>
+  {% elif disease == 'kidney' %}
+  <div class="mb-3">
+    <label for="blood_sugar" class="form-label">Blood Sugar Level</label>
+    <input type="number" class="form-control" id="blood_sugar" name="blood_sugar" required />
+  </div>
+  <div class="mb-3">
+    <label for="creatinine" class="form-label">Creatinine Level</label>
+    <input type="number" class="form-control" id="creatinine" name="creatinine" required />
+  </div>
+  {% elif disease == 'liver' %}
+  <div class="mb-3">
+    <label for="gender" class="form-label">Gender</label>
+    <select class="form-select" id="gender" name="gender" required>
+      <option value="" disabled selected>Select gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="medical_history" class="form-label">Medical History</label>
+    <textarea class="form-control" id="medical_history" name="medical_history" rows="3"></textarea>
+  </div>
+  {% elif disease == 'diabetes' %}
+  <div class="mb-3">
+    <label for="blood_sugar" class="form-label">Blood Sugar Level</label>
+    <input type="number" class="form-control" id="blood_sugar" name="blood_sugar" required />
+  </div>
+  <div class="mb-3">
+    <label for="bmi" class="form-label">BMI</label>
+    <input type="number" step="0.1" class="form-control" id="bmi" name="bmi" required />
+  </div>
+  <div class="mb-3">
+    <label for="family_history" class="form-label">Family History</label>
+    <textarea class="form-control" id="family_history" name="family_history" rows="3"></textarea>
+  </div>
+  {% endif %}
+
+  <button type="submit" class="btn btn-success">Predict</button>
+</form>
+
+{% endblock %}

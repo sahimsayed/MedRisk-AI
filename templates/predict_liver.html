@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Liver Disease Risk Prediction - medriskAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      display: block;
+      width: 150px;
+      margin: 30px auto 0;
+      padding: 12px;
+      font-size: 18px;
+      background-color: #ffd700; /* gold */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #333;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e6c200;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      color: #333;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <h2>Liver Disease Risk Prediction</h2>
+  <form class="form-grid" method="POST" action="{{ url_for('predict', disease='liver') }}">
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required min="1" max="120" />
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div>
+      <label for="total_bilirubin">Total Bilirubin (mg/dL):</label>
+      <input type="number" id="total_bilirubin" name="total_bilirubin" step="0.01" required min="0" />
+    </div>
+    <div>
+      <label for="direct_bilirubin">Direct Bilirubin (mg/dL):</label>
+      <input type="number" id="direct_bilirubin" name="direct_bilirubin" step="0.01" required min="0" />
+    </div>
+    <div>
+      <label for="alkaline_phosphotase">Alkaline Phosphotase (IU/L):</label>
+      <input type="number" id="alkaline_phosphotase" name="alkaline_phosphotase" required min="0" />
+    </div>
+    <div>
+      <label for="alamine_aminotransferase">Alamine Aminotransferase (IU/L):</label>
+      <input type="number" id="alamine_aminotransferase" name="alamine_aminotransferase" required min="0" />
+    </div>
+    <div>
+      <label for="aspartate_aminotransferase">Aspartate Aminotransferase (IU/L):</label>
+      <input type="number" id="aspartate_aminotransferase" name="aspartate_aminotransferase" required min="0" />
+    </div>
+    <div>
+      <label for="total_proteins">Total Proteins (g/dL):</label>
+      <input type="number" id="total_proteins" name="total_proteins" step="0.01" required min="0" />
+    </div>
+    <div>
+      <label for="albumin">Albumin (g/dL):</label>
+      <input type="number" id="albumin" name="albumin" step="0.01" required min="0" />
+    </div>
+    <div>
+      <label for="albumin_and_globulin_ratio">Albumin and Globulin Ratio:</label>
+      <input type="number" id="albumin_and_globulin_ratio" name="albumin_and_globulin_ratio" step="0.01" required min="0" />
+    </div>
+
+    <button type="submit">Predict</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="dashboard-banner mb-4">
+  <div class="text-center py-5">
+    <h2 class="text-white fw-bold display-6">Welcome to Your Health Dashboard</h2>
+    <p class="text-white">Choose a health risk you want to check</p>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-6 col-lg-3 mb-4">
+    <div class="card p-3">
+      <h5>Heart Attack</h5>
+      <!-- <img src="{{ url_for('static', filename='images/heart.png') }}" alt="Heart" class="img-fluid mb-2"> -->
+       <img src="{{ url_for('static', filename='images/heart.png') }}" alt="Heart" class="img-fluid mb-2" style="height: 150px; object-fit: cover;">
+
+      <a href="{{ url_for('predict', disease='heart') }}" class="btn btn-danger w-100">Predict Heart Disease</a>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3 mb-4">
+    <div class="card p-3">
+      <h5>Kidney Disease</h5>
+      <img src="{{ url_for('static', filename='images/kidney.png') }}" alt="Kidney" class="img-fluid mb-2"style="height: 150px; object-fit: cover;">
+      <a href="{{ url_for('predict', disease='kidney') }}" class="btn btn-primary w-100">Predict Kidney Disease</a>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3 mb-4">
+    <div class="card p-3">
+      <h5>Liver Disease</h5>
+      <img src="{{ url_for('static', filename='images/liver.png') }}" alt="Liver" class="img-fluid mb-2" style="height: 150px; object-fit: cover;">
+      <a href="{{ url_for('predict', disease='liver') }}" class="btn btn-warning w-100">Predict Liver Disease</a>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3 mb-4">
+    <div class="card p-3">
+      <h5>Diabetes</h5>
+      <img src="{{ url_for('static', filename='images/diabetes-test.png') }}" alt="Diabetes" class="img-fluid mb-2" style="height: 150px; object-fit: cover;">
+      <a href="{{ url_for('predict', disease='diabetes') }}" class="btn btn-success w-100">Predict Diabetes</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pulmonary Disease Risk Prediction - medriskAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <style>
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      grid-column: 1 / -1;
+      padding: 12px;
+      background-color: #ffcc00;
+      border: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e6b800;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center; margin-top:20px;">Pulmonary Disease Risk Prediction</h2>
+  <form class="form-grid" method="POST" action="{{ url_for('predict', disease='pulmonary') }}">
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required min="1" max="120" />
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="" disabled selected>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div>
+      <label for="smoking_status">Smoking Status:</label>
+      <select id="smoking_status" name="smoking_status" required>
+        <option value="" disabled selected>Select Option</option>
+        <option value="never">Never</option>
+        <option value="former">Former Smoker</option>
+        <option value="current">Current Smoker</option>
+      </select>
+    </div>
+    <div>
+      <label for="exposure_to_pollution">Exposure to Pollution (hours/day):</label>
+      <input type="number" id="exposure_to_pollution" name="exposure_to_pollution" min="0" max="24" required />
+    </div>
+    <div>
+      <label for="chronic_cough">Chronic Cough (days per month):</label>
+      <input type="number" id="chronic_cough" name="chronic_cough" min="0" max="30" required />
+    </div>
+    <div>
+      <label for="family_history">Family History of Pulmonary Disease:</label>
+      <select id="family_history" name="family_history" required>
+        <option value="" disabled selected>Select Option</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <button type="submit">Predict</button>
+  </form>
+</body>
+</html>

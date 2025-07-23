@@ -1,0 +1,19 @@
+<!-- home page HTML -->
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="hero-section text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold" style="color: #000;">
+      Welcome to <span style="color: #ffc107;">MedRisk-AI</span>
+    </h1>
+    <p class="lead" style="color: #000;">Your AI-powered health risk predictor</p>
+    <a href="{{ url_for('login') }}" class="btn btn-warning btn-lg mt-3">Login to Start</a>
+    <!-- <a href="{{ url_for('predict', disease='heart') }}" class="btn">Predict Heart Attack Risk</a> -->
+
+  </div>
+</div>
+{% endblock %}
+
+
+
